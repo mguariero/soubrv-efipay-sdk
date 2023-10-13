@@ -48,6 +48,8 @@ class Utils
      */
     public static function getCacheHash(string $prefix, string $api, string $clientId): string
     {
+        $remoteIp = $_SERVER['REMOTE_ADDR'] ?? $_SERVER['HTTP_X_FORWARDED_FOR'] ?? "127.0.0.1"
+        
         return hash('sha512', 'Efí-'. $prefix ."-". $api . $_SERVER['REMOTE_ADDR'] . substr($clientId, -6));
     }
 
